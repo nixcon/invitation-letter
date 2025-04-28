@@ -1,0 +1,51 @@
+% Please use LuaLaTeX for compiling
+
+\documentclass[
+DIN5008B, % folding in thirds (DIN5008B) is more common than folding in fourths (DIN5008A)
+USenglish,
+fromphone=true,fromemail=true,fromlogo=true,
+enlargefirstpage,
+firstfoot=false
+]{scrlttr2}
+
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{datetime}
+\usepackage{xstring}
+\usepackage{hyperref}
+
+\usepackage{data} % Our stuff in data.sty in this directory
+
+
+% \setkomavar{toname}{\toname}
+\setkomavar{toaddress}{\toaddress}
+\newcommand{\addressee}{\toname\\\toaddress}
+\setkomavar{backaddress}{\usekomavar{fromname}\\\usekomavar{fromaddress}}
+
+\setkomavar{backaddressseparator}{~{$\vcenter{\hbox{\scalebox{0.5}{$\bullet$}}}$} }
+
+\setplength{locvpos}{1.3cm}
+\setplength{refvpos}{9cm}
+
+% If addressee and backaddress should be visible in a letter with window, adjust this
+\setplength{toaddrvpos}{5.2cm} 
+
+
+\setkomavar{fromlogo}{\includegraphics[width=2cm]{nixcon-logo.png}}
+\DeclareTextFontCommand{\emph}{\bfseries}
+
+
+\begin{document}
+\sloppy
+\begin{letter}{\vspace{0.6cm}\addressee} % vspace is dumb hack since backaddress has multiple lines, please do not use \usekomavar{toname}
+  \opening{To whom it may concern:}
+  I write to confirm the invitation of \emph{{\toname}}, holding passport number \emph{\passportnumber}, date of birth \emph{\dateofbirth}, residing at \emph{\StrSubstitute{\toaddress}{\\}{, }}, tel. \emph{\totel}, to visit Switzerland for participating in the NixCon 2025 conference.  The conference will be held at \emph{Ostschweizer Fachhochschule, Oberseestrasse 10, CH-8640 Rapperswil} from \emph{\arrivedate} to \emph{\departdate}.
+
+  {\toname} plans to arrive on {\arrivedate} and depart on {\departdate}, and has arranged to stay at {\tohotel} during that period.  While here, {\toname} will be responsible for their own living expenses.
+
+  If you have any further questions regarding {\toname} and their visit, please feel free to contact me directly by phone via \usekomavar{fromphone} or by email via \usekomavar{fromemail}.
+  \closing{Sincerely,}
+\end{letter}
+\end{document}
