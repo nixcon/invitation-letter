@@ -19,7 +19,5 @@ This is a repository containing a LaTeX template for creating an invitation lett
 
 ### Compilation
 
-- No `flake.nix` yet, sorry.
-- Tested with `texlive` distribution
-- Simply compile with `latexmk` in this directory
-  - Alternatively, use `lualatex letter.tex` in this directory
+- Change invitee data in in `data.sty`
+- exec `nix run`
