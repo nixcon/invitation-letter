@@ -17,7 +17,7 @@
       in {
         packages = rec {
           genPdf = pkgs.writeShellScriptBin "genPdf" ''
-            ${pkgs.texliveFull}/bin/lualatex letter.tex
+            ${pkgs.texliveFull}/bin/latexmk
           '';
           default = genPdf;
         };
